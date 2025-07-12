@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573201705570",
+    "project_id": "portfolio-2e9ad",
+    "storage_bucket": "portfolio-2e9ad.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573201705570:android:6a973eb0fa14efb6d2ff3b",
+        "android_client_info": {
+          "package_name": "com.heet.portfolio"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJwWv_3Xvzdf__TyoO_6izY2WmartK7eE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import 'package:portfolio/data/dev_data.dart';
 import 'package:portfolio/utils/app_colors.dart';
 import 'package:portfolio/utils/app_strings.dart';
 import 'package:portfolio/widget/skills_box.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FirstView extends StatelessWidget {
@@ -21,88 +22,99 @@ class FirstView extends StatelessWidget {
 
     final dev = DevData.devData;
 
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-      child: Column(
-        children: [
-          SizedBox(height: size.height * 0.06),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("My Portfolio"),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+              Navigator.pushReplacementNamed(context, '/login');
+            },
+          )
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: Column(
+          children: [
+            SizedBox(height: size.height * 0.02),
 
-          /// Smaller Avatar
-          Container(
-            padding: EdgeInsets.all(size.height * .008),
-            decoration: BoxDecoration(
-              color: theme.cardColor,
-              shape: BoxShape.circle,
-            ),
-            child: CircleAvatar(
-              radius: size.height * .10, // Reduced from .15
-              backgroundColor: AppColors.appPrimaryColor,
-              backgroundImage: NetworkImage(AppStrings.profileImageUrl),
-            ),
-          ),
-
-          const SizedBox(height: 10),
-
-          /// Name with smaller font
-          
-          /// Name and College
-          Column(
-            children: [
-              Text(
-                dev.name,
-                style: theme.textTheme.displayLarge?.copyWith(fontSize: 26),
+            /// Avatar
+            Container(
+              padding: EdgeInsets.all(size.height * .008),
+              decoration: BoxDecoration(
+                color: theme.cardColor,
+                shape: BoxShape.circle,
               ),
-              const SizedBox(height: 4),
-              Text(
-                DevData.devData.education['College'] ?? "", // Safely fetch college name
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  fontSize: 16,
-                  color: theme.hintColor,
+              child: CircleAvatar(
+                radius: size.height * .10,
+                backgroundColor: AppColors.appPrimaryColor,
+                backgroundImage: NetworkImage(AppStrings.profileImageUrl),
+              ),
+            ),
+
+            const SizedBox(height: 10),
+
+            /// Name and College
+            Column(
+              children: [
+                Text(
+                  dev.name,
+                  style: theme.textTheme.displayLarge?.copyWith(fontSize: 26),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  dev.education['College'] ?? "",
+                  style: theme.textTheme.bodyMedium?.copyWith(
+                    fontSize: 16,
+                    color: theme.hintColor,
+                  ),
+                ),
+              ],
+            ),
+
+            const SizedBox(height: 16),
+
+            /// Skills
+            Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 10,
+              runSpacing: 10,
+              children: List.generate(
+                dev.skillsAndProgress.length,
+                (index) => SkillBox(
+                  text: dev.skillsAndProgress[index].name,
                 ),
               ),
-            ],
-          ),
-
-
-          const SizedBox(height: 16),
-
-          /// Skills
-          Wrap(
-            alignment: WrapAlignment.center,
-            spacing: 10,
-            runSpacing: 10,
-            children: List.generate(
-              dev.skillsAndProgress.length,
-              (index) => SkillBox(
-                text: dev.skillsAndProgress[index].name,
-              ),
             ),
-          ),
 
-          const SizedBox(height: 16),
+            const SizedBox(height: 16),
 
-          /// Coding Profiles
-          _cardWrapper(
-            theme,
-            "Coding Profiles",
-            children: [
-              _linkText("LeetCode", dev.leetCode),
-              _linkText("Codeforces", dev.codeforces),
-              _linkText("GitHub", dev.gitHub),
-            ],
-          ),
+            /// Coding Profiles
+            _cardWrapper(
+              theme,
+              "Coding Profiles",
+              children: [
+                _linkText("LeetCode", dev.leetCode),
+                _linkText("Codeforces", dev.codeforces),
+                _linkText("GitHub", dev.gitHub),
+              ],
+            ),
 
-          /// Education
-          _cardWrapper(
-            theme,
-            "Education",
-            children: dev.education.entries
-                .map((entry) => _eduRow(entry.key, entry.value))
-                .toList(),
-          ),
+            /// Education
+            _cardWrapper(
+              theme,
+              "Education",
+              children: dev.education.entries
+                  .map((entry) => _eduRow(entry.key, entry.value))
+                  .toList(),
+            ),
 
-          SizedBox(height: size.height * 0.04),
-        ],
+            SizedBox(height: size.height * 0.04),
+          ],
+        ),
       ),
     );
   }
@@ -117,7 +129,6 @@ class FirstView extends StatelessWidget {
           style: TextStyle(
             fontSize: 15,
             color: AppColors.appPrimaryColor,
-            //decoration: TextDecoration.underline,
           ),
         ),
       ),
