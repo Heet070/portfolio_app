@@ -3,9 +3,6 @@
 **Showcase Brilliance. Inspire Confidence. Elevate Your Presence.**  
 A stunning, cross-platform portfolio framework built with Flutter and Firebase.
 
-[![Last Commit](https://img.shields.io/github/last-commit/Heet070/portfolio_app?color=green&style=flat-square)](https://github.com/Heet070/portfolio_app/commits/main)
-[![Top Language](https://img.shields.io/github/languages/top/Heet070/portfolio_app?style=flat-square)](https://github.com/Heet070/portfolio_app)
-[![Languages Count](https://img.shields.io/github/languages/count/Heet070/portfolio_app?style=flat-square)](https://github.com/Heet070/portfolio_app)
 
 ---
 
@@ -15,9 +12,6 @@ A stunning, cross-platform portfolio framework built with Flutter and Firebase.
 - [🚀 Why Portfolio_app?](#-why-portfolio_app)
 - [⚙️ Getting Started](#-getting-started)
 - [📦 Installation](#-installation)
-- [💡 Usage](#-usage)
-- [🧪 Testing](#-testing)
-- [🛠 Built With](#-built-with)
 
 ---
 
@@ -35,7 +29,7 @@ It seamlessly integrates **Firebase** for authentication, analytics, and more �
 
 - 🧩 **Modular Architecture** — Cleanly structured for scalability and long-term maintenance.
 - 🌐 **Cross-Platform Compatibility** — Works on mobile, desktop, and the web.
-- 🔥 **Firebase Ready** — Auth, analytics, messaging — all built-in and pluggable.
+- 🔥 **Firebase Ready** — Auth
 - 🎨 **Reusable Components** — Skills, contact, project cards and more — all customizable.
 - ⚙️ **Modern Dev Tooling** — Static analysis, streamlined build systems, and continuous deployment friendly.
 
