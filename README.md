@@ -3,7 +3,7 @@
 **Showcase Brilliance. Inspire Confidence. Elevate Your Presence.**  
 A stunning, cross-platform portfolio framework built with Flutter and Firebase.
 
-
+[![Watch the demo](https://[your-thumbnail-url](https://github.com/Heet070/portfolio_app).com/demo.png)]([https://drive.google.com/file/d/DRIVE_FILE_ID/view?usp=sharing](https://drive.google.com/file/d/18Ga9J51ow7rI1IDGqrE5FxvMYKoM8AhZ/view?usp=sharing))
 ---
 
 ## 🧭 Table of Contents
